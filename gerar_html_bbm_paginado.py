@@ -43,7 +43,7 @@ def coletar_itens(url_base, itens_por_pagina=50, total_itens=100):
     return itens[:total_itens]
 
 # Função para gerar o HTML com paginação, estilização e imagem
-def gerar_html(itens, nome_arquivo="recent_submissions.html", itens_por_pagina=50):
+def gerar_html(itens, nome_arquivo="index.html", itens_por_pagina=50):
     # Dividir itens em páginas
     paginas = [itens[i:i + itens_por_pagina] for i in range(0, len(itens), itens_por_pagina)]
     
