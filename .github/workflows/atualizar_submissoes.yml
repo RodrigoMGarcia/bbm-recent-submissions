@@ -31,4 +31,16 @@ jobs:
           git config --global user.email 'garcia.rodrigo@usp.br'
           git add index.html BBM_DIGITAL.png
           git commit -m "Atualização automática das submissões recentes"
-          git push
+          git push- name: Commit e push do HTML atualizado
+  env:
+    GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  run: |
+    git config --global user.name 'RodrigoMGarcia'
+    git config --global user.email 'garcia.rodrigo@usp.br'
+    if [ -n "$(git status --porcelain)" ]; then
+      git add index.html BBM_DIGITAL.png
+      git commit -m "Atualização automática das submissões recentes"
+      git push https://${{ env.GH_TOKEN }}@github.com/rodrigomgarcia/bbm-recent-submissions.git
+    else
+      echo "Nenhuma mudança para commitar."
+    fi
