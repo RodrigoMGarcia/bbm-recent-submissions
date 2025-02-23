@@ -29,8 +29,8 @@ jobs:
 
       - name: Verificar alterações no index.html e commitar se necessário
         run: |
-          git config --local user.email "seu-email@example.com"
-          git config --local user.name "Seu Nome"
+          git config --local user.email "garcia.rodrigo@usp.br"
+          git config --local user.name "RodrigoMGarcia"
           git add index.html
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Atualização automática do index.html"
