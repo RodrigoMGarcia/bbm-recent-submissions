@@ -31,10 +31,10 @@ jobs:
         run: |
           git config --local user.email "garcia.rodrigo@usp.br"
           git config --local user.name "RodrigoMGarcia"
-          git add index.html
+         git add index.html
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Atualização automática do index.html"
-            git push origin main
+            git commit -m "Atualização automática do index.html [skip ci]"
+            git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/seu-usuario/bbm-recent-submissions.git main
           else
             echo "Nenhuma alteração detectada."
           fi
