@@ -34,7 +34,7 @@ jobs:
           git add index.html
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Atualização automática do index.html [skip ci]"
-            git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/seu-usuario/bbm-recent-submissions.git main
+            git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/RodrigoMGarcia/bbm-recent-submissions.git main
           else
             echo "Nenhuma alteração detectada."
           fi
