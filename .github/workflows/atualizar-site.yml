@@ -1,0 +1,40 @@
+name: Atualizar site BBM Digital
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Executa a cada hora; ajuste conforme sua necessidade
+  push:
+    branches:
+      - main
+
+jobs:
+  atualizar_site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Configurar Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Executar o script de atualização
+        run: python gerar_html_bbm_paginado.py
+
+      - name: Verificar alterações no index.html e commitar se necessário
+        run: |
+          git config --local user.email "seu-email@example.com"
+          git config --local user.name "Seu Nome"
+          git add index.html
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Atualização automática do index.html"
+            git push origin main
+          else
+            echo "Nenhuma alteração detectada."
+          fi
