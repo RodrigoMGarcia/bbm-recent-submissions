@@ -1,0 +1,17 @@
+[build]
+# O comando abaixo roda o script Python para gerar o index.html
+command = "python3 gerar_html_bbm_paginado.py"
+# O Netlify publicará os arquivos da raiz (index.html, BBM_DIGITAL.png, etc.)
+publish = "."
+
+[build.environment]
+# Defina a versão do Python compatível com o ambiente do Netlify
+PYTHON_VERSION = "3.11"
+
+[dev]
+# Comando para testar localmente, se necessário
+command = "python3 -m http.server 8080"
+
+[functions]
+# Se você usar funções serverless no futuro, especifique o diretório
+directory = "functions"
