@@ -26,7 +26,7 @@ jobs:
 
       - name: Executar o script de atualização
         run: python gerar_html_bbm_paginado.py
-
+        
       - name: Verificar alterações no index.html e commitar se necessário
         run: |
           git config --local user.email "garcia.rodrigo@usp.br"
